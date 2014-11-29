@@ -1,0 +1,46 @@
+/* EDLine.IDL : DSOM-Klasse : EDisServ.DLL V 1.1 */
+/* Speicherung der Info einer Textzeile          */
+/*                                               */
+/* (C) 1995 M.Schwarz, FoPra TU-Muenchen SS1995  */
+/* (C) 1996 M.Schwarz, SOMObjects-Programmierung */
+/*                     OS/2 Inside 7/96          */
+
+#ifndef edline_idl
+#define edline_idl
+
+#include <somobj.idl>
+
+interface EDLine : SOMObject
+{
+  attribute long   lnr;         /* Zeilenummer */
+  attribute string line;        /* Zeilentext */
+  attribute string lock;        /* Benutzername, der Sperre hÑlt */
+  attribute long   vnr;         /* Versionsnummer */
+  attribute long   ltime;       /* Zeitpunkt der letzten Sperre */
+
+ /* initialisiert Speicher fÅr die Datenwerte und legt sie darin ab */
+  void set(in long slnr, in string sline, in string slock, in long svnr, in long sltime);
+
+
+  #ifdef __SOMIDL__
+  implementation
+  {
+    releaseorder : _get_lnr, _set_lnr,
+                   _get_line, _set_line,
+                   _get_lock, _set_lock,
+                   _get_vnr, _set_vnr,
+                   _get_ltime, _set_ltime,
+                   set;
+
+    majorversion = 1;
+    minorversion = 1;
+
+    somDefaultInit:   override, init;
+    somDestruct:      override;
+
+    dllname = "EDisServ.DLL";
+  };
+  #endif
+};
+#endif
+

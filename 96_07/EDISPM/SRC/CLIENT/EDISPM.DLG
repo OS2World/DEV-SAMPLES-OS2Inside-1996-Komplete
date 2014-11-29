@@ -1,0 +1,64 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+DLGINCLUDE 1 "EDISPM.H"
+
+DLGTEMPLATE IDD_UNAMEBOX LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Anmeldung", IDD_UNAMEBOX, 12, 6, 148, 66, WS_VISIBLE, 
+            FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        PUSHBUTTON      "~OK", DID_OK, 6, 4, 40, 14
+        PUSHBUTTON      "A~bbruch", DID_CANCEL, 49, 4, 40, 14
+        LTEXT           "Benutzername:", NOSELECT, 6, 46, 92, 11
+        ENTRYFIELD      "", IDD_UENTRY, 8, 33, 132, 8, ES_MARGIN
+    END
+END
+
+DLGTEMPLATE IDD_OPENNEW LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "ôffnen - Neu", IDD_OPENNEW, 12, 6, 178, 74, WS_VISIBLE, 
+            FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        DEFPUSHBUTTON   "~OK", DID_OK, 6, 4, 40, 14
+        PUSHBUTTON      "A~bbruch", DID_CANCEL, 49, 4, 40, 14
+        PUSHBUTTON      "Dateiauswahl...", IDD_NEUFILE, 92, 4, 79, 14
+        LTEXT           "Name:", NOSELECT, 6, 51, 36, 8
+        LTEXT           "Dateipfad:", NOSELECT, 6, 31, 50, 8
+        ENTRYFIELD      "", IDD_NDOCID, 52, 52, 116, 8, ES_MARGIN
+        ENTRYFIELD      "", IDD_NDOCFILENAME, 52, 32, 116, 8, ES_MARGIN
+    END
+END
+
+DLGTEMPLATE IDD_ABOUTBOX LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Produktinformation", IDD_ABOUTBOX, 21, 11, 255, 178, NOT 
+            FS_DLGBORDER | FS_BORDER | WS_VISIBLE, FCF_TITLEBAR | 
+            FCF_NOBYTEALIGN
+    BEGIN
+        CONTROL         "", IDD_APROGRAMFRAME, 13, 78, 228, 62, WC_STATIC, 
+                        SS_FGNDFRAME
+        CONTROL         "", IDD_ACOPYRIGHTFRAME, 13, 6, 229, 64, WC_STATIC, 
+                        SS_FGNDFRAME
+        CTEXT           "EDisPM V 1.1", NOSELECT, 58, 125, 125, 8, NOT 
+                        WS_GROUP
+        CTEXT           "(c) 1996 by Computer-Software-Entwicklung ", 
+                        NOSELECT, 20, 55, 217, 8
+        CTEXT           "Martin Schwarz", IDC_TEXT, 18, 46, 220, 8
+        CTEXT           "Meisenweg 5", NOSELECT, 19, 37, 217, 8
+        CTEXT           "84544 Aschau / Germany", NOSELECT, 19, 29, 217, 8
+        CTEXT           "E-MAIL: schwarma@informatik.tu-muenchen.de", 
+                        NOSELECT, 21, 21, 214, 8
+        PUSHBUTTON      "OK", DID_OK, 191, 115, 40, 14, BS_NOPOINTERFOCUS
+        CONTROL         IDBM_MSINFO, NOSELECT, 110, 150, 34, 23, WC_STATIC, 
+                        SS_BITMAP | WS_GROUP | WS_VISIBLE
+        CTEXT           "Verteilter Editor fÅr OS/2", NOSELECT, 54, 113, 131, 
+                        8, DT_MNEMONIC
+        ICON            IDIC_EDISPM, NOSELECT, 26, 115, 21, 16, WS_GROUP
+        CTEXT           "Erstellt im Rahmen eines Fortgeschrittenen- praktik"
+                        "ums Åber die CORBA/SOM/DSOM- Technologie an der TU-"
+                        "MÅnchen", -15531, 24, 82, 207, 28, DT_WORDBREAK
+        CTEXT           "http://www.informatik.tu-muenchen.de/~schwarma/", 
+                        NOSELECT, 14, 12, 226, 8
+    END
+END

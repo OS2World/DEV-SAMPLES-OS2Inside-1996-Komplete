@@ -1,0 +1,60 @@
+/* EDServ.IDL : DSOM-Klasse : EDisServ.DLL V 1.1 */
+/* Editorservice-Klasse                          */
+/*                                               */
+/* (C) 1995 M.Schwarz, FoPra TU-Muenchen SS1995  */
+/* (C) 1996 M.Schwarz, SOMObjects-Programmierung */
+/*                     OS/2 Inside 7/96          */
+
+#ifndef edserv_idl
+#define edserv_idl
+
+#include <somobj.idl>
+#include <edtext.idl>
+
+interface EDService : EDText
+{
+   attribute sequence<string> users;
+   attribute sequence<long>   events;
+   attribute long eventcnt;
+   attribute string docname, servername, FullName;
+
+   long   get_edline  (in long lnr, out EDLine ed_line, in string user);
+   long   put_edline  (in long lnr, in  string line, in long vnr, in string user);
+   long   ins_edline  (in long prelnr, out EDLine ed_line, in string user);
+   long   del_edline  (in long lnr, in long vnr, in string user);
+   long   getlock     (in long lnr, in  long vnr, in string user);
+   long   rellock     (in long lnr, in string user);
+   long   appendline  (in long lnr, in long vnr, in string user);
+   long   getinfo     (out long nlines, out long evcnt, in string user);
+   long   getevents   (inout long evcnt, out sequence<long> events, in string user);
+   long   joinsession (in string user);
+   long   leavesession(in string user);
+   long   getusers    (out sequence<string> userlist);
+   long   locked      (in long lnr, in string user);
+
+
+   #ifdef __SOMIDL__
+   implementation
+   {
+      releaseorder: _get_users, _set_users,
+                    _get_events, _set_events,
+                    _get_eventcnt, _set_eventcnt,
+                    _get_docname, _set_docname,
+                    _get_servername, _set_servername,
+                    _get_FullName, _set_FullName,
+                    get_edline, put_edline, ins_edline, del_edline,
+                    getlock, rellock, appendline, getinfo, getevents,
+                    joinsession, leavesession, getusers, locked;
+
+      majorversion = 1;
+      minorversion = 1;
+
+      somDefaultInit:    override, init;
+      somDestruct:       override;
+
+      dllname = "EDisServ.DLL";
+   };
+   #endif
+};
+#endif
+

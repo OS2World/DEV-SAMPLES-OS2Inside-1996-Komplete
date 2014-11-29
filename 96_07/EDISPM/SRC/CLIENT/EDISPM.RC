@@ -1,0 +1,80 @@
+/* EDisPM.rc:                   EDisPM.EXE V 1.1 */
+/* Editorclient - Ressourcen                     */
+/*                                               */
+/* (C) 1995 M.Schwarz, FoPra TU-Muenchen SS1995  */
+/* (C) 1996 M.Schwarz, SOMObjects-Programmierung */
+/*                     OS/2 Inside 7/96          */
+/*                                               */
+/* latest changes: 11.5.1996                     */
+/*-----------------------------------------------*/
+
+#include "EDISPM.H"
+
+ICON IDIC_EDISPM "EDISPM.ICO"
+
+BITMAP IDBM_MSINFO "MSINFO.BMP"
+
+MENU EDMAINMENU
+BEGIN
+   SUBMENU "~Datei", IDMM_FILE
+   BEGIN
+      MENUITEM "~™ffnen...", IDMM_OPEN
+      MENUITEM "Sch~lieáen" , IDMM_CLOSE, MIS_TEXT, MIA_DISABLED
+      MENUITEM "~Sichern", IDMM_SAVE, MIS_TEXT, MIA_DISABLED
+      MENUITEM SEPARATOR
+      MENUITEM "~Verlassen", IDMM_EXIT
+      MENUITEM SEPARATOR
+      MENUITEM "~Benutzername „ndern", IDMM_TEXT_USERNAME
+   END
+   SUBMENU "~Hilfe", IDMM_HELP
+   BEGIN
+      MENUITEM "~Produktinformation", IDMM_ABOUT
+   END
+END
+
+MENU EDCLIENTMENU
+BEGIN
+   SUBMENU "~Datei", IDMM_FILE
+   BEGIN
+      MENUITEM "~™ffnen...", IDMM_OPEN
+      MENUITEM "Sch~lieáen" , IDMM_CLOSE
+      MENUITEM "~Sichern", IDMM_SAVE
+      MENUITEM SEPARATOR
+      MENUITEM "~Verlassen", IDMM_EXIT
+      MENUITEM SEPARATOR
+      MENUITEM "~Benutzername „ndern", IDMM_TEXT_USERNAME
+   END
+   SUBMENU "~Ansicht", IDMM_VIEW
+   BEGIN
+      MENUITEM "Split ~Horizontal", IDMM_HORZ
+      MENUITEM "Split ~Vertikal", IDMM_VERT
+      MENUITEM SEPARATOR
+      MENUITEM "~Aktualisieren", IDMM_UPDATE
+   END
+   SUBMENU "~Hilfe", IDMM_HELP
+   BEGIN
+      MENUITEM "~Produktinformation", IDMM_ABOUT
+   END
+END
+
+
+STRINGTABLE
+BEGIN
+   IDMM_FILE  "Datei ”ffnen, schlieáen, speichern; verlassen."
+   IDMM_NEW   "Neue Datei in Dateiliste eintragen."
+   IDMM_OPEN  "™ffnen einer Datei aus der Dateiliste."
+   IDMM_SAVE  "Speichern der aktuellen Datei."
+   IDMM_CLOSE "Speichern und Schlieáen der aktuellen Datei."
+   IDMM_EXIT  "Das Programm verlassen."
+   IDMM_VIEW  "Fensteraufbau und Textanzeige."
+   IDMM_HORZ  "Benutzerfenster unter das Texteditorfenster anordnen."
+   IDMM_VERT  "Benutzerfenster links vom Texteditorfenster anordnen."
+   IDMM_HELP  "Hilfestellungen zum Programm."
+   IDMM_ABOUT "Zeigt die Programminformationen an."
+   IDMM_UPDATE "Žnderungen vom EDService holen und einbringen"
+   IDMM_TEXT_USERNAME "Žndern des eingestellten Benutzernamens."
+END
+
+rcinclude EDISPM.DLG
+
+

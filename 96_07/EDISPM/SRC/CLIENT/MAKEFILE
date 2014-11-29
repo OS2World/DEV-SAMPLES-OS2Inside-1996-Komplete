@@ -1,0 +1,105 @@
+# EDisPM.MAK
+# Created by IBM WorkFrame/2 MakeMake at 20:15:22 on 23 Oct 1995
+#
+# The actions included in this make file are:
+#  Compile::C++ Compiler
+#  Link::Linker
+#  Bind::Resource Bind
+#  Compile::Resource Compiler
+
+SCFLAGSXH   = -s"xh"     $(IDLPATH) -p -D _PLATFORM_OS2_ -S 98304
+SCDEF       = -sdef      $(IDLPATH) -p -D _PLATFORM_OS2_ -S 98304
+
+.SUFFIXES: .CPP .RC .obj .res .idl 
+
+.all: \
+    EDisPM.EXE
+
+.CPP.obj:
+    @echo " Compile::C++ Compiler "
+    icc.exe /Tdp /Q /Ti /Gm /Gd /Fo"%|dpfF.obj" /C %s
+
+.RC.res:
+    @echo " Compile::Resource Compiler "
+    rc.exe -r %s %|dpfF.RES
+
+.idl.xh:
+    @echo " Compile::SOM Compiler "
+    sc $(SCFLAGSXH) $*.idl
+
+
+EDisPM.EXE: \
+    EDDLG.obj \
+    EDADM.obj \
+    EDCSTUB.obj \
+    EDCLIENT.obj \
+    EDISPM.obj \
+    EDISPM.res \
+    {$(LIB)}somtk.lib \
+    {$(LIB)}edisserv.lib \
+    {$(LIB)}edispm.def
+    @echo " Link::Linker "
+    @echo " Bind::Resource Bind "
+    icc.exe @<<
+    /Tdp /Q 
+     /Ti /Gm /Gd 
+     /B" /de /pmtype:pm"
+     /FeEDisPM.EXE 
+     somtk.lib 
+     edisserv.lib 
+     edispm.def
+     EDDLG.obj
+     EDISPM.obj
+     EDADM.obj
+     EDCLIENT.obj
+     EDCSTUB.obj
+<<
+    rc.exe EDISPM.res EDisPM.EXE
+
+EDDLG.obj: \
+    EDDLG.CPP \
+    EDISPM.H \
+    EDDLG.HPP
+
+EDLINE.xh: EDLINE.idl
+
+EDTEXT.xh: EDTEXT.idl
+
+EDSERV.xh: EDSERV.idl
+
+EDCSTUB.obj: \
+    EDCSTUB.CPP \
+    EDISPM.H \
+    EDADM.HPP \
+    EDCStub.HPP \
+    EDLINE.XH \
+    EDTEXT.XH \
+    EDSERV.XH
+
+EDCLIENT.obj: \
+    EDCLIENT.CPP \
+    EDISPM.H \
+    EDClient.HPP \
+    EDCStub.HPP \
+    EDCLInf.HPP
+
+EDADM.obj: \
+    EDADM.CPP \
+    EDISPM.H \
+    EDADM.HPP
+
+EDISPM.obj: \
+    EDISPM.CPP \
+    EDISPM.H \
+    EDISPM.HPP \
+    EDDLG.HPP \
+    EDADM.HPP \
+    EDClient.HPP
+
+EDISPM.res: \
+    EDISPM.RC \
+    EDISPM.DLG \
+    EDISPM.ICO \
+    EDISPM.H \
+    MSINFO.BMP
+

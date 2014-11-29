@@ -1,0 +1,54 @@
+:TARGET.SUFFIXES
+:DEPENDENCY..rc .res 
+:TARGET.all
+:DEPENDENCY.
+.\blackboard.exe
+:RULE..rc.res
+:ACTION.Resource Compile
+:COMMAND.
+irc.exe %s
+:TARGET..\Blckbard.obj
+:DEPENDENCY.
+C:\temp\win\Blckbard.cpp
+{C:\temp\win;.\;$(INCLUDE);}Blckbard.hpp
+{C:\temp\win;.\;$(INCLUDE);}Blckbard.h
+:ACTION.Compile
+:COMMAND.
+icc.exe /I.\ /DIC_TRACE_DEVELOP /Gh /Gm /Ti /Gd /Gf- /Fb /Ft"VBSTEREO" /Fo".\%|fF.obj" /C C:\temp\win\Blckbard.cpp
+:TARGET..\vbmain.obj
+:DEPENDENCY.
+C:\temp\win\vbmain.cpp
+{C:\temp\win;.\;$(INCLUDE);}Blckbard.hpp
+{C:\temp\win;.\;$(INCLUDE);}Blckbard.h
+:ACTION.Compile
+:COMMAND.
+icc.exe /I.\ /DIC_TRACE_DEVELOP /Gh /Gm /Ti /Gd /Gf- /Fb /Ft"VBSTEREO" /Fo".\%|fF.obj" /C C:\temp\win\vbmain.cpp
+:TARGET..\Blckbard.rc
+:DEPENDENCY.
+C:\temp\win\Blckbard.rcx
+{C:\temp\win;$(INCLUDE);}Blckbard.h
+{C:\temp\win;$(INCLUDE);}Blckbard.rci
+:ACTION.Resource Precompile
+:COMMAND.
+ircpre.bat .\Blckbard.rcx Blckbard
+:TARGET..\blackboard.exe
+:DEPENDENCY.
+.\Blckbard.obj
+.\blckbard.res
+.\vbmain.obj
+:ACTION.Link
+:COMMAND.
+icc.exe @<<
+/I.\ /DIC_TRACE_DEVELOP /Tdp 
+ /Gh /Ti /Gm /Gd /Gf- 
+ /Fb /Ft"VBSTEREO"  /B" /de /br /pmtype:pm /noe /code:RX /data:RW"
+ /B" /def"
+ /Feblackboard.exe 
+ CPPWPA3.OBJ 
+ .\Blckbard.obj
+ .\blckbard.res
+ .\vbmain.obj
+<<
+:TARGET..\blckbard.res
+:DEPENDENCY.
+.\Blckbard.rc

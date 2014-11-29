@@ -1,0 +1,17 @@
+-ProjectInfo
++name=Blackboard
++type=VACPP.IWS
+-BuildInfo
++target=blackboard.exe
++runOptions=
++makefile=Makefile
+-LocationInfo
++defaultDir=C:\\temp\\win
++dirs=C:\\temp\\win
+-ConfigInfo
++filter=*
++position=0 1 126 952 -4 -4 629 588 1270 1009
+-Environment
++var1=PATH=C:\\temp\\win\\HELP;%PATH%
++var2=HELP=C:\\temp\\win\\HELP;%HELP%
+

@@ -1,0 +1,171 @@
+APIs zu Drag and Drop:
+======================
+
+DrgAcceptDroppedFiles           Drop wird zugelassen
+DrgAccessDraginfo               Draginfo Struktur soll aufgeschlossen werden
+DrgAddStrHandle                 Erzeugung von String Handles
+DrgAllocDraginfo                Anlegen einer Draginfo Struktur
+DrgAllocDragtransfer            Anlegen einer Dragtransfer Struktur
+DrgCancelLazyDrag               Abbruch eines Lazy Drags
+DrgDeleteDraginfoStrHandles     Lîschen aller String Handles
+DrgDeleteStrHandle              Lîschen eines String Handles
+DrgDrag                         Initiieren eines Drag
+DrgDragFiles                    Initieren eines Drag von Dateien
+DrgFreeDraginfo                 Draginfo Struktur wieder freigeben
+DrgFreeDragtransfer             Dragtransfer Struktur wieder freigeben
+DrgGetPS                        Presentation Space des Drag Objekt besorgen
+DrgLazyDrag                     Initiieren eines Lazy Drag
+DrgLazyDrop                     Initiieren eines Lazy Drop
+DrgPostTransferMsg              POSTen einer Nachricht an Konversationspartner
+DrgPushDraginfo                 Entriegeln einer Draginfo Struktur fÅr andere Prozesse
+DrgQueryDraginfoPtr             Besorgen des Draginfo Pointers
+DrgQueryDraginfoPtrFromDragitem Besorgen des Draginfo Pointers mit Hilfe des Dragitem Pointers
+DrgQueryDraginfoPtrFromHwnd     Besorgen des Draginfo Pointers mit Hilfe eines Window Handles
+DrgQueryDragitem                Besorgen eines Dragitems
+DrgQueryDragitemCount           Anzahl Dragitems abfragen
+DrgQueryDragitemPtr             Besorgen des Dragitem Pointers
+DrgQueryDragStatus              Status des Drag and Drops abfragen
+DrgQueryNativeRMF               Abfrage des Rendering Mechanismus Strings
+DrgQueryNativeRMFLen            Abfrage der LÑnge des Rendering Mechanismus Strings
+DrgQueryStrName                 Strings aus Handle rekonstruieren
+DrgQueryStrNameLen              LÑnge eines Strings zu einem Handle abfragen
+DrgQueryTrueType                Typ Information eines Objektes abfragen
+DrgQueryTrueTypeLen             LÑnge der Typ Information eines Objektes abfragen
+DrgReallocDraginfo              Draginfo Struktur vergrî·ern/verkleinern
+DrgReleasePS                    Presentation Space des Drag Objekt freigeben
+DrgSendTransferMsg              SENDen einer Nachricht an Konversationspartner
+DrgSetDragitem                  Dragitem in Draginfo Struktur setzen
+DrgSetDragImage                 Image eines Drag Items setzen
+DrgSetDragPointer               Pointer eines Drag Items setzen
+DrgVerifyNativeRMF              Direkte öberprÅfung des Rendering Mechanismus Strings
+DrgVerifyRMF                    Direkte öberprÅfung des Rendering Mechanismus Strings
+DrgVerifyTrueType               Direkte öberprÅfung der Typ Information
+DrgVerifyType                   Direkte öberprÅfung der Typ Information
+DrgVerifyTypeSet                Direkte öberprÅfung der Typ Information
+
+
+Messages zu Drag and Drop:
+==========================
+
+DM_DISCARDOBJECT                Hinweis das ein Objekt auf einem Abfalleimer Objekt landete
+DM_DRAGERROR                    Wird generiert wenn DrgDragFiles der COPY oder MOVE nicht erfolgreich abgeschlossen wurde
+DM_DRAGFILECOMPLETE             COPY oder MOVE bei DrgDragFiles war erfolgreich
+DM_DRAGLEAVE                    Der Pointer verlÑ·t das Fenster
+DM_DRAGOVER                     Der Pointer betritt das Fenster
+DM_DRAGOVERNOTIFY               Asynchrone Message nach DM_DRAGOVER
+DM_DROP                         Der Benutzer lÑ·t ein Objekt auf dem Fenster fallen
+DM_DROPHELP                     Der Benutzer hat F1 gedrÅckt
+DM_DROPNOTIFY                   Nach dem DROP kînnen Einstellungen vorgenommen werden
+DM_EMPHASIZETARGET              Anwendung kann Emphasis selbst modifizieren
+DM_ENDCONVERSATION              Abschlu· eines Drag and Drop Protokolls
+DM_FILERENDERED                 Datei Rendering war erfolgreich
+DM_PRINT                        Wird auf DM_PRINTOBJECT gemappt
+DM_PRINTOBJECT                  Hinweis das ein Objekt auf einem Drucker Objekt landete
+DM_RENDER                       Aufforderung zum Rendering
+DM_RENDERCOMPLETE               Rendering war erfolgreich
+DM_RENDERFILE                   Aufforderung zum Rendering einer Datei
+DM_RENDERPREPARE                Vorbereitung des Rendering
+
+WM_BEGINDRAG                    Der Benutzer startet einen Drag and Drop Vorgang
+WM_DRAGFIRST                    FÅr Lazy Drag
+WM_DRAGLAST                     FÅr Lazy Drag
+WM_ENDDRAG                      Der Benutzer beendet einen Drag and Drop Vorgang
+
+
+Events zu Drag and Drop:
+========================
+
+CN_DRAGAFTER  (Container)       Wird nur bei bestimmten Stilen nach CN_DRAGOVER generiert
+CN_DRAGLEAVE  (Container)       Der Pointer verlÑ·t den Container
+CN_DRAGOVER   (Container)       Der Pointer betritt den Container
+CN_DROP       (Container)       Der Benutzer lÑ·t ein Objekt auf dem Container fallen
+CN_DROPHELP   (Container)       Der Benutzer hat F1 gedrÅckt
+CN_DROPNOTIFY (Container)       Asynchrone Notification nach CN_DROP
+CN_INITDRAG   (Container)       Der Benutzer startet einen Drag and Drop Vorgang
+
+
+Standard Drag and Drop Typen:
+=============================
+
+DRT_ASM      Assembler Code
+DRT_BASIC    BASIC Code
+DRT_BINDATA  Binary Data
+DRT_BITMAP   Bitmap
+DRT_C        C Code
+DRT_COBOL    COBOL Code
+DRT_DLL      Dynamic Link Library
+DRT_DOSCMD   DOS Command File
+DRT_EXE      Executable
+DRT_FORTRAN  FORTRAN Code
+DRT_ICON     Icon
+DRT_LIB      Library
+DRT_METAFILE Metafile
+DRT_OS2CMD   OS/2 Command File
+DRT_PASCAL   Pascal Code
+DRT_RESOURCE Resource File
+DRT_TEXT     Plain Text
+DRT_UNKNOWN  Unknown
+
+
+Standard Drag and Drop Rendering Mechanismen:
+=============================================
+
+DRM_CUSTOMER Benutzerspezifisch
+DRM_DDE      Dynamic Data Exchange
+DRM_DISCARD  Objekt kann gelîscht werden
+DRM_OBJECT   Workplace Shell Objekt
+DRM_OS2FILE  OS/2 Datei
+DRM_PRINT    Objekt kann gedruckt werden
+
+
+Standard Drag and Drop Rendering Formate:
+=========================================
+
+DRF_BITMAP       OS/2 Bitmap
+DRF_DIB          DIB
+DRF_DIF          DIF
+DRF_DSPBITMAP    Bitmap Bit Stream
+DRF_METAFILE     Metafile
+DRF_OEMTEXT      OEM Text
+DRF_OWNERDISPLAY Bit Stream
+DRF_PTRPICT      Druckerbild
+DRF_RTF          Rich Text Format
+DRF_SYLK         SYLK
+DRF_TEXT         Nullterminated String
+DRF_TIFF         TIFF
+DRF_UNKNOWN      Unknown
+
+
+Aufbau einer Konversation zwischen zwei Fenstern mit einem unbeteiligtem Fenster:
+=================================================================================
+
+Herkunftsanwendung    Unbeteiligte Anwendung  Zielanwendung
+------------------    ----------------------  -------------
+
+WM_BEGINDRAG
+   DrgAllocDraginfo
+   DrgSetDragitem (n)
+   DrgDrag
+                      DM_DRAGOVER
+                         DrgAccessDraginfo
+                         DrgFreeDraginfo
+                         DOR_DROP
+                      DM_DRAGLEAVE
+                                              DM_DRAGOVER
+                                                 DrgAccessDraginfo
+                                                 DrgFreeDraginfo
+                                                 DOR_DROP
+WM_ENDDRAG
+                                              DM_DROP
+                                                 DrgAccessDraginfo
+                                                 DrgAllocDragtransfer |
+                                                 DrgSendTransferMsg   |
+DM_RENDER                                                             | nur wenn Rendering
+                                                 DM_RENDER            | benîtigt wird
+DrgFreeDragtransfer                                                   |
+                                                 DM_RENDERCOMPLETE    |
+DM_ENDCONVERSATION                                                    |
+                                                 DrgFreeDragtransfer  |
+                                                 DrgFreeDraginfo
+
+

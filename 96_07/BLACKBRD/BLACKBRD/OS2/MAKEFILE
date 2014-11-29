@@ -1,0 +1,61 @@
+# Makefile
+# Created by IBM WorkFrame/2 MakeMake at 21:01:45 on 23 May 1996
+#
+# The actions included in this make file are:
+#  Compile::C++ Compiler
+#  Link::Linker
+#  Bind::Resource Bind
+#  Compile::Resource Precompile
+#  Compile::Resource Compiler
+
+.SUFFIXES: .cpp .obj .rc .rcx .res 
+
+.all: \
+    .\Blackboard.exe
+
+.cpp.obj:
+    @echo " Compile::C++ Compiler "
+    icc.exe /I. /Tdp /Ti /Gm /Gd /C %s
+
+.rcx.rc:
+    @echo " Compile::Resource Precompile "
+    icc.exe -c /Pc+ /Pe+ /Pd /I. %s > %|dpfF.rc
+
+.rc.res:
+    @echo " Compile::Resource Compiler "
+    rc.exe -r %s %|dpfF.RES
+
+.\Blackboard.exe: \
+    .\Blckbard.obj \
+    .\vbmain.obj \
+    .\Blckbard.res \
+    {$(LIB)}os2386.lib
+    @echo " Link::Linker "
+    @echo " Bind::Resource Bind "
+    icc.exe @<<
+     /Tdp 
+     /B" /de /pmtype:pm"
+     /FeBlackboard.exe 
+     os2386.lib 
+     .\Blckbard.obj
+     .\vbmain.obj
+<<
+    rc.exe .\Blckbard.res Blackboard.exe
+
+.\Blckbard.obj: \
+    C:\Temp\OS2\Blckbard.cpp \
+    {C:\Temp\OS2;.;$(INCLUDE);}Blckbard.hpp \
+    {C:\Temp\OS2;.;$(INCLUDE);}Blckbard.h
+
+.\vbmain.obj: \
+    C:\Temp\OS2\vbmain.cpp \
+    {C:\Temp\OS2;.;$(INCLUDE);}Blckbard.hpp \
+    {C:\Temp\OS2;.;$(INCLUDE);}Blckbard.h
+
+.\Blckbard.rc: \
+    C:\Temp\OS2\Blckbard.rcx \
+    {$(INCLUDE)}Blckbard.rci \
+    {$(INCLUDE)}Blckbard.h
+
+.\Blckbard.res: \
+    .\Blckbard.rc

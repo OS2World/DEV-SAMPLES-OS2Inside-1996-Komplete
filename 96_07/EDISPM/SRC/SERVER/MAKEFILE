@@ -1,0 +1,93 @@
+SOMBASE=\toolkit
+!INCLUDE <stdmake.inc>
+
+CC          = icc
+CFLAGS      = /Ss /Ti /Ge- /Ft- /Fo"%|dpfF.obj" /C %s
+
+!IFDEF VACPP
+
+LINKER      = ilink
+LKSYNTX     = /nofree
+
+!ELSE
+
+LINKER      = link386
+
+!ENDIF
+
+LFLAGS      = $(LKSYNTX) $(LDEBUG) /wvft+ /nod /noe /packd /packc /exepack /align:16 /pmtype:pm /nologo /noi
+
+
+
+# ----Targets-----Targets-----Targets-----Targets-----Targets----
+
+ALL:  edisserv.dll 
+  @echo Up-to-date
+
+
+.all: \
+    EDISSERV.DLL
+
+.CPP.obj:
+    @echo " Compile::C++ Compiler "
+    icc.exe /Ss /Ti /Ge- /Ft- /Fo"%|dpfF.obj" /C %s
+
+.C.obj:
+    @echo " Compile::C++ Compiler "
+    icc.exe /Ss /Ti /Ge- /Ft- /Fo"%|dpfF.obj" /C %s
+
+EDISSERV.DLL: \
+    EDTEXT.obj \
+    INITFUNC.obj \
+    EDLINE.obj \
+    EDSERV.obj \
+    {$(LIB)}somtk.lib \
+    edisserv.def 
+    @echo " Link::Linker "
+    icc.exe @<<
+     /B" /exepack:2"
+     /FeEDISSERV.DLL 
+     somtk.lib 
+     edisserv.def
+     EDTEXT.obj
+     INITFUNC.obj
+     EDLINE.obj
+     EDSERV.obj
+<<
+   implib edisserv.lib edisserv.dll
+   copy edisserv.lib ..\client
+
+edline.xih: edline.idl
+edline.xh:  edline.idl
+edline.h:   edline.idl
+
+edtext.xih: edtext.idl
+edtext.xh:  edtext.idl
+edtext.h:   edtext.idl
+
+edserv.ih:  edserv.idl
+edserv.h:   edserv.idl
+edserv.xh:  edserv.idl
+
+
+EDTEXT.obj: \
+    EDTEXT.CPP \
+    edline.xh \
+    EDText.xih 
+
+EDSERV.obj: \
+    EDSERV.C \
+    edserv.ih \
+    edtext.h \
+    edline.h
+
+EDLINE.obj: \
+    EDLINE.CPP \
+    edline.xih
+
+initfunc.obj: \
+    initfunc.CPP \
+    edline.xh \
+    edtext.xh \
+    edserv.xh
+

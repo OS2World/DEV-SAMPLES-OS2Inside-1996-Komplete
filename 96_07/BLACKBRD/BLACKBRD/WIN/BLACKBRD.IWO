@@ -1,0 +1,51 @@
+-File::C++ Compiler
++data=\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0 \0\0\0\0\0\0\0\0\0\0\0\n\0\0\0\0\0\0\0\0\0\0\0B\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0b\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0ÿ\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\08Ë\0\0\0\0\0\0VBSTEREO\0.\\\0IC_TRACE_DEVELOP\0
++date=2450135
++time=66762
+-File::Linker
++data=\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0À·†y\0\0\0\0\0\0\0\0\0\0\e\04\0	\0\0\0\0\0'\0/\0"\0\0\0\0\0\0\0\0<\0>\0\0\0\0\0\0@\0B\0\0\0\0\0\0\0\0\0\0\0\0WINDOWS\0%o\065536\0512\0256\01048576\04096\01048576\04096\04194304\04\00\00\00\0
++date=2450135
++time=66775
+-Project::Build normal
++data=/project "d:\\ibmcppw\\samples\\visbuild\\vbstereo\\vbstereo.iwp" /toolName "Build normal" /noUseParentOptions /noPassOptionsToSubprojects /action "C++ Compiler" /action "Linker" /action "Resource Compiler" /action "Resource Precompiler" /genMakeFile /noGenForce /noGenDepFile /genScript "IWFMMGEN.CMD" /make "NMAKE /f %makefile%" /buildSubprojects /lockProjects /checkTargets /prompt /noDisplay\0
++date=2450115
++time=61802
+-Project::Rebuild all
++data=/project "d:\\ibmcppw\\samples\\visbuild\\vbstereo\\vbstereo.iwp" /toolName "Rebuild all" /noUseParentOptions /noPassOptionsToSubprojects /action "C++ Compiler" /action "Linker" /action "Resource Compiler" /action "Resource Precompiler" /genMakeFile /noGenForce /noGenDepFile /genScript "IWFMMGEN.CMD" /make "NMAKE /a /f %makefile%" /buildSubprojects /lockProjects /checkTargets /prompt /noDisplay\0
++date=2450115
++time=61807
+-File::OPTTEMPL
++data=/I.\\ /DIC_TRACE_DEVELOP /Tdp \n /Gh /Ti /Gm /Gd /Gf- \n /Fb /Ft"VBSTEREO" \n\0
++date=2450135
++time=66758
+-Project::IWFMMake::Timestamp
++data=832900170
++date=2450227
++time=76169
+-Project::IWFMMake::Action Set
++data=/action "C++ Compiler" /action "Linker" /action "Resource Compiler" /action "Resource Precompiler" 
++date=2450227
++time=76170
+-Project::IWFMMake::File Set
++data=/file "c:\\temp\\win\\blckbard.cpp" /file "c:\\temp\\win\\blckbard.rcx" /file "c:\\temp\\win\\vbmain.cpp" 
++date=2450227
++time=76170
+-File::OPTBLDSM
++data=o´Ê\0\0\0\0\0\0\0\0\0\0FP\0CPPWPA3.OBJ\0
++date=2450133
++time=73582
+REO\\VBMixer.cpp" /file "C:\\IBMCPPW\\SAMPLES\\VISBUILD\\VBSTEREO\\VBMixer.rcx" /file "C:\\IBMCPPW\\SAMPLES\\VISBUILD\\VBSTEREO\\VBStereo.cpp" /file "C:\\IBMCPPW\\SAMPLES\\VISBUILD\\VBSTEREO\\VBStereo.rcx" /file "C:\\IBMCPPW\\SAMPLES\\VISBUILD\\VBSTEREO\\VBVideo.cpp" /file "C:\\IBMCPPW\\SAMPLES\\VISBUILD\\VBSTEREO\\VBVideo.rcx" /file "C:\\IBMCPPW\\SAMPLES\\VISBUILD\\VBSTEREO\\VBWave.cpp" /file "C:\\IBMCPPW\\SAMPLES\\VISBUILD\\VBSTEREO\\VBWave.rcx" 
++date=2450227
++time=55067
+-File::OPTBLDSM
++data=o´Ê\0\0\0\0\0\0\0\0\0\0FP\0CPPWPA3.OBJ\0
++date=2450133
++time=73582
+file "D:\\IBMCPPW\\samples\\visbuild\\vbstereo\\VBTIMER.obj" 
++date=2450115
++time=62271
+-File::OPTBLDSM
++data=o´Ê\0\0\0\0\0\0\0\0\0\0FP\0CPPWPA3.OBJ\0
++date=2450133
++time=73582
+

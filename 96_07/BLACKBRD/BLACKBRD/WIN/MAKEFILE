@@ -1,0 +1,58 @@
+# Makefile
+# Created by IBM WorkFrame/2 MakeMake at 21:09:20 on 23.05.96
+#
+# The actions included in this make file are:
+#  Compile
+#  Resource Precompile
+#  Resource Compile
+#  Link
+
+.SUFFIXES: .rc .res 
+
+.all: \
+    .\blackboard.exe
+
+.rc.res:
+    @echo " Resource Compile "
+    irc.exe %s
+
+.\Blckbard.obj: \
+    C:\temp\win\Blckbard.cpp \
+    {C:\temp\win;.\;$(INCLUDE);}Blckbard.hpp \
+    {C:\temp\win;.\;$(INCLUDE);}Blckbard.h
+    @echo " Compile "
+    icc.exe /I.\ /DIC_TRACE_DEVELOP /Gh /Gm /Ti /Gd /Gf- /Fb /Ft"VBSTEREO" /Fo".\%|fF.obj" /C C:\temp\win\Blckbard.cpp
+
+.\vbmain.obj: \
+    C:\temp\win\vbmain.cpp \
+    {C:\temp\win;.\;$(INCLUDE);}Blckbard.hpp \
+    {C:\temp\win;.\;$(INCLUDE);}Blckbard.h
+    @echo " Compile "
+    icc.exe /I.\ /DIC_TRACE_DEVELOP /Gh /Gm /Ti /Gd /Gf- /Fb /Ft"VBSTEREO" /Fo".\%|fF.obj" /C C:\temp\win\vbmain.cpp
+
+.\Blckbard.rc: \
+    C:\temp\win\Blckbard.rcx \
+    {C:\temp\win;$(INCLUDE);}Blckbard.h \
+    {C:\temp\win;$(INCLUDE);}Blckbard.rci
+    @echo " Resource Precompile "
+    ircpre.bat .\Blckbard.rcx Blckbard
+
+.\blackboard.exe: \
+    .\Blckbard.obj \
+    .\blckbard.res \
+    .\vbmain.obj
+    @echo " Link "
+    icc.exe @<<
+    /I.\ /DIC_TRACE_DEVELOP /Tdp 
+     /Gh /Ti /Gm /Gd /Gf- 
+     /Fb /Ft"VBSTEREO"  /B" /de /br /pmtype:pm /noe /code:RX /data:RW"
+     /B" /def"
+     /Feblackboard.exe 
+     CPPWPA3.OBJ 
+     .\Blckbard.obj
+     .\blckbard.res
+     .\vbmain.obj
+<<
+
+.\blckbard.res: \
+    .\Blckbard.rc

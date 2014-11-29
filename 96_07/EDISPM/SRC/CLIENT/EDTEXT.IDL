@@ -1,0 +1,52 @@
+/* EDText.IDL : DSOM-Klasse : EDisServ.DLL V 1.1 */
+/* Speicherung der Textzeilen und Zugriff        */
+/*                                               */
+/* (C) 1995 M.Schwarz, FoPra TU-Muenchen SS1995  */
+/* (C) 1996 M.Schwarz, SOMObjects-Programmierung */
+/*                     OS/2 Inside 7/96          */
+
+#ifndef edtext_idl
+#define edtext_idl
+
+#include <somobj.idl>
+
+interface EDLine;
+interface EDText : SOMObject
+{
+
+   attribute sequence<long>   seqLNr;
+   attribute sequence<EDLine> seqLines;
+   attribute long             nLines;
+   attribute string           strFilePath;
+
+   long loadtext(in string filePath);
+   long savetext(in string filePath);
+   long getText (out sequence<long> sLNr);
+   long addLine (in long lid, in EDLine ed_line);
+   long insLine (in long prelid, out EDLine ed_line);
+   long delLine (in long lid);
+   long setLine (in long lid, in EDLine ed_line);
+   long getLine (in long lid, out EDLine ed_line);
+
+   #ifdef __SOMIDL__
+   implementation
+   {
+     releaseorder : _get_seqLNr, _set_seqLNr,
+                    _get_seqLines, _set_seqLines,
+                    _get_nLines, _set_nLines,
+                    _get_strFilePath, _set_strFilePath,
+                addLine, delLine, setLine, getLine,
+                loadtext, savetext, getText, insLine;
+
+     majorversion = 1;
+     minorversion = 1;
+
+     somDefaultInit:   override, init;
+     somDestruct:      override;
+
+     dllname = "EDisServ.DLL";
+   };
+   #endif
+};
+#endif
+

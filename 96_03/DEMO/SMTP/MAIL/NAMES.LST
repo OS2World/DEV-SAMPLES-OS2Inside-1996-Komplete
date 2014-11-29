@@ -1,0 +1,18 @@
+; OK-Namen SMTPD
+;
+; x:\mail\names.lst
+;
+; * 25 Namen bis 40 Zeichen, ohne Leerzeichen
+; * Gro·- /Kleinschreibung wird nicht unterschieden
+; * fÅr jeden Namen mu· ein gleichnamiges
+; Verzeichnis im aktuell verwendeten
+; Datenverzeichnis (Option -f x:\mail)
+; bereits vorhanden sein, im Beispiel
+; x:\mail\Max
+; x:\mail\Moritz
+; * Datei mu· sich in diesem Datenverzeichnis befinden
+
+  
+Max
+Moritz
+

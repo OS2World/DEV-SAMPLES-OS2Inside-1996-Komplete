@@ -1,0 +1,54 @@
+:TARGET.SUFFIXES
+:DEPENDENCY..cpp .obj .rc .rcx .res 
+:TARGET.all
+:DEPENDENCY.
+.\Blackboard.exe
+:RULE..cpp.obj
+:ACTION.Compile::C++ Compiler
+:COMMAND.
+icc.exe /I. /Tdp /Ti /Gm /Gd /C %s
+:RULE..rcx.rc
+:ACTION.Compile::Resource Precompile
+:COMMAND.
+icc.exe -c /Pc+ /Pe+ /Pd /I. %s > %|dpfF.rc
+:RULE..rc.res
+:ACTION.Compile::Resource Compiler
+:COMMAND.
+rc.exe -r %s %|dpfF.RES
+:TARGET..\Blackboard.exe
+:DEPENDENCY.
+.\Blckbard.obj
+.\vbmain.obj
+.\Blckbard.res
+{$(LIB)}os2386.lib
+:ACTION.Link::Linker
+:COMMAND.
+icc.exe @<<
+ /Tdp 
+ /B" /de /pmtype:pm"
+ /FeBlackboard.exe 
+ os2386.lib 
+ .\Blckbard.obj
+ .\vbmain.obj
+<<
+:ACTION.Bind::Resource Bind
+:COMMAND.
+rc.exe .\Blckbard.res Blackboard.exe
+:TARGET..\Blckbard.obj
+:DEPENDENCY.
+C:\Temp\OS2\Blckbard.cpp
+{C:\Temp\OS2;.;$(INCLUDE);}Blckbard.hpp
+{C:\Temp\OS2;.;$(INCLUDE);}Blckbard.h
+:TARGET..\vbmain.obj
+:DEPENDENCY.
+C:\Temp\OS2\vbmain.cpp
+{C:\Temp\OS2;.;$(INCLUDE);}Blckbard.hpp
+{C:\Temp\OS2;.;$(INCLUDE);}Blckbard.h
+:TARGET..\Blckbard.rc
+:DEPENDENCY.
+C:\Temp\OS2\Blckbard.rcx
+{$(INCLUDE)}Blckbard.rci
+{$(INCLUDE)}Blckbard.h
+:TARGET..\Blckbard.res
+:DEPENDENCY.
+.\Blckbard.rc
